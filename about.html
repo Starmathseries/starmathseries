@@ -144,24 +144,26 @@
       }
 
       nav {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        background-color: black;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        pointer-events: none;
-      }
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
 
-      nav.active {
-        max-height: 300px;
-        opacity: 1;
-        pointer-events: auto;
-      }
+nav.active {
+  max-height: 300px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
       .tutor-profile {
         flex-direction: column;
@@ -204,8 +206,8 @@
 
   <nav id="nav">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
     <a href="index.html#individual">Packages</a>
+    <a href="about.html">About</a>
     <a href="index.html#contact">Contact</a>
   </nav>
 
