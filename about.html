@@ -33,13 +33,29 @@
       text-align: center;
     }
 
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 1.2rem;
+      right: 1rem;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      z-index: 1001;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.active {
+      transform: rotate(90deg);
+    }
+
     nav {
       background-color: black;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 1rem;
       padding: 1rem;
+      transition: all 0.3s ease;
     }
 
     nav a {
@@ -48,10 +64,11 @@
       font-weight: bold;
       font-size: 1rem;
       padding: 0.5rem;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: white;
     }
 
     .section {
@@ -120,11 +137,30 @@
       font-size: 1.4rem;
     }
 
-    /* Mobile responsiveness */
+    /* Mobile Styles */
     @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
       nav {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
         flex-direction: column;
-        gap: 0.5rem;
+        align-items: center;
+        background-color: black;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      nav.active {
+        max-height: 300px;
+        opacity: 1;
+        pointer-events: auto;
       }
 
       .tutor-profile {
@@ -163,9 +199,10 @@
   <header>
     <h1>About Our Tutoring</h1>
     <p>Empowering high school students with personalized education</p>
+    <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
   </header>
 
-  <nav>
+  <nav id="nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="index.html#individual">Packages</a>
@@ -207,6 +244,18 @@
       <a href="https://wa.me/27712345678" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
   </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    let isOpen = false;
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      isOpen = !isOpen;
+      toggle.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+  </script>
 
 </body>
 </html>
